@@ -18,8 +18,8 @@ do
       [*] IP: $1.$i / ACTIVA \n
       [*] OS: $os \n"
   else
-    if [ $2 == "-d" ]; then 
-      echo -e "\n[x] Die: $1.$i\n"
+    if [ $2 == "-d" 2>/dev/null ]; then 
+      echo -e "\n[x] Die: $1.$i\n"      
     fi
     continue
   fi

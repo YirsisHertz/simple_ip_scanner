@@ -6,7 +6,7 @@ do
   pingResponse="$(ping -n 1 $1.$i)"
 
   
-  if echo $pingResponse | grep 'TTL' >> /dev/null; then
+  if echo $pingResponse | grep 'TTL' >>/dev/null; then
     case "$pingResponse" in *TTL=64*)
       os="Linux/Android"
     esac
@@ -15,10 +15,12 @@ do
     esac
     
     echo -e "==========================================
-      IP: $1.$i / ACTIVA \n
-      OS: $os \n"
+      [*] IP: $1.$i / ACTIVA \n
+      [*] OS: $os \n"
   else
-    echo "Die: $1.$i"
+    if [ $2 == "-d" ]; then 
+      echo -e "\n[x] Die: $1.$i\n"
+    fi
     continue
   fi
 done

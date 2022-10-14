@@ -3,7 +3,7 @@
 for  i in {1..254}
 do
   os="Windows"
-  pingResponse="$(ping -n 1 192.168.0.$i)"
+  pingResponse="$(ping -n 1 $1.$i)"
 
   
   if echo $pingResponse | grep 'TTL' >> /dev/null; then
@@ -14,10 +14,11 @@ do
       os="Router"
     esac
     
-    echo -e "================================
-      IP: 192.168.0.$i / ACTIVA \n
+    echo -e "==========================================
+      IP: $1.$i / ACTIVA \n
       OS: $os \n"
   else
+    echo "Die: $1.$i"
     continue
   fi
 done
